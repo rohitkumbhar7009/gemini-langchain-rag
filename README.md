@@ -10,7 +10,9 @@ A demo project that builds a **Google Cloud Certifications Chatbot** using **Lan
   - Calls a Gemini chat model (for example `gemini-2.0-flash`) to answer user questions using retrieved document chunks. [file:2][file:5]
 
 - **`knowledge_base.py`**  
-  Loads Google Cloud certification PDFs from URLs, splits them into text chunks, creates embeddings with `GoogleGenerativeAIEmbeddings`, and writes them into a BigQuery table via `BigQueryVectorStore`. [file:1][web:7][web:8]
+  Loads Google Cloud certification PDFs from URLs, splits them into text chunks,
+
+  creates embeddings with `GoogleGenerativeAIEmbeddings`, and writes them into a BigQuery table via `BigQueryVectorStore`. [file:1][web:7][web:8]
 
 - **`search.py`**  
   Simple script that runs a `similarity_search` query against the BigQuery vector store to verify that documents are stored and searchable. [file:2][web:7]
@@ -40,19 +42,25 @@ A demo project that builds a **Google Cloud Certifications Chatbot** using **Lan
 ## Setup
 
 1. **Clone the repository**
+
+2. 
 git clone https://github.com/rohitkumbhar7009/gemini-langchain-rag.git
+
+
 cd gemini-langchain-rag
 
 
-2. **Create and activate a virtual environment**
+4. **Create and activate a virtual environment**
 
 
 python -m venv .venv
 
 Windows
+
 ..venv\Scripts\activate
 
 Linux / macOS
+
 source .venv/bin/activate
 
 
@@ -62,18 +70,24 @@ Create a `.env` file in the project root:
 
 
 PROJECT= # your GCP project ID
+
 DATASET= # BigQuery dataset name
+
 TABLE= # BigQuery table name
+
 REGION= # BigQuery dataset region
+
 GOOGLE_API_KEY= # Gemini API key from Google AI Studio
 
 
-- `GOOGLE_API_KEY` is created in **Google AI Studio → API keys**. [web:33][web:40][web:42]  
+- `GOOGLE_API_KEY` is created in **Google AI Studio → API keys**. [web:33][web:40][web:42]
+- 
 - `PROJECT`, `DATASET`, `TABLE`, `REGION` must match your BigQuery configuration. [web:7][web:73]
 
 4. **Install dependencies**
 
 python -m pip install --upgrade pip
+
 python -m pip install -r requirements.txt
 
 ## Running the Demo
@@ -83,6 +97,7 @@ python -m pip install -r requirements.txt
 Run `knowledge_base.py` to download the exam guide PDFs, chunk them, create embeddings, and populate the BigQuery vector table. [file:1][web:7][web:8]
 
 python knowledge_base.py
+
 This initializes or updates the table:
 
 PROJECT.DATASET.TABLE -> e.g. gcp-cert-bot.cert_kb.cert_docs
